@@ -162,7 +162,7 @@ function actualizarCarrito()
 
    }
    //Totalizar carrito y modal
-
+   
    const nodoContendorTotal = document.createElement("div");
    nodoContendorTotal.appendChild(document.createElement("hr"));
    
@@ -172,17 +172,16 @@ function actualizarCarrito()
    nodoContendorTotal.appendChild(nodoTotal);
 
    nodoCarrito.appendChild(nodoContendorTotal);
-
    $("#carritoModal").append(`<hr><p class="total">Tu pedido es de $ ${total.toFixed(2)}</p>
-                              `);
+   `);
 
    //Confirmar compra
 
-   const botonConfirmar = document.createElement("button");
-   nodoCarrito.appendChild(document.createElement("hr"));
-   botonConfirmar.innerText="Confirmas la compra?";
-   botonConfirmar.onclick = () => {
-      confirm("Confirmá");
+      const botonConfirmar = document.createElement("button");
+      // nodoCarrito.appendChild(document.createElement("hr"));
+      botonConfirmar.innerText="Confirmas la compra?";
+      botonConfirmar.onclick = () => {
+         confirm("Confirmá");
 
       const nodoCostoEnvio=$("#costoEnvio")[0];
       nodoCarrito.appendChild(document.createElement("hr"));
@@ -192,10 +191,11 @@ function actualizarCarrito()
             nodoCarrito.innerHTML=`<h4>Tu costo de envío es de $150.</h4>
                                     <h3>Te contactaremos a la brevedad.</h3>
                                     <h2>Gracias por tu compra!</h2>`;
-      }
+                                    }
 
-   }
+      }
    
+
    nodoContendorTotal.appendChild(botonConfirmar);
    
 }

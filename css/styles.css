@@ -144,3 +144,8 @@ button {
             box-shadow: 0 0 5px rgba(149, 201, 147, 1);
             opacity: 1;
 }
+.cartImg img {
+    width: 200px;
+    height: auto;
+    display: inline;
+}
