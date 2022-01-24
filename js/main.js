@@ -30,7 +30,7 @@ function mostrarTitulo2(){
    const nodoTitulo2 = $("#titulo2");
    const nodoHacePedido = $("<h2></h2>");
    nodoHacePedido.attr("id", "pedido");
-   nodoHacePedido.html("Hace tu pedido.");
+   nodoHacePedido.html("Hace tu pedido acá");
    nodoTitulo2.prepend(nodoHacePedido);
 
    $("#pedido").mouseover(function () { 
@@ -105,6 +105,7 @@ function listarProductos(idCategoria)
                      `;
 
       let boton = document.createElement("button");
+      boton.setAttribute("id","botonComprar");
       boton.onclick = () => {
          carrito.agregarProducto(producto);
          actualizarCarrito();
@@ -115,9 +116,7 @@ function listarProductos(idCategoria)
 
       item.appendChild(boton);
 
-      lista.appendChild(item);
-      
-      
+      lista.appendChild(item);      
 
    }
    nodoProductos.appendChild(lista);
@@ -172,30 +171,29 @@ function actualizarCarrito()
    nodoContendorTotal.appendChild(nodoTotal);
 
    nodoCarrito.appendChild(nodoContendorTotal);
-   $("#carritoModal").append(`<hr><p class="total">Tu pedido es de $ ${total.toFixed(2)}</p>
+   $("#carritoModal").prepend(`<hr><h2 class="total">Tu pedido es de $ ${total.toFixed(2)}</h2>
    `);
 
    //Confirmar compra
 
-      const botonConfirmar = document.createElement("button");
-      // nodoCarrito.appendChild(document.createElement("hr"));
-      botonConfirmar.innerText="Confirmas la compra?";
-      botonConfirmar.onclick = () => {
-         confirm("Confirmá");
+   const botonConfirmar = document.createElement("button");
+   // nodoCarrito.appendChild(document.createElement("hr"));
+   botonConfirmar.innerText="Confirmas la compra?";
+   botonConfirmar.onclick = () => {
+      confirm("Confirmá");
 
-      const nodoCostoEnvio=$("#costoEnvio")[0];
-      nodoCarrito.appendChild(document.createElement("hr"));
-      let botonCostoEnvio = nodoCarrito.appendChild(document.createElement("button"));
-      botonCostoEnvio.innerHTML="Conocé el costo de tu envío";
-      botonCostoEnvio.onclick = () => {
-            nodoCarrito.innerHTML=`<h4>Tu costo de envío es de $150.</h4>
-                                    <h3>Te contactaremos a la brevedad.</h3>
-                                    <h2>Gracias por tu compra!</h2>`;
-                                    }
+   const nodoCostoEnvio=$("#costoEnvio")[0];
+   nodoCarrito.appendChild(document.createElement("hr"));
+   let botonCostoEnvio = nodoCarrito.appendChild(document.createElement("button"));
+   botonCostoEnvio.innerHTML="Conocé el costo de tu envío";
+   botonCostoEnvio.onclick = () => {
+         nodoCarrito.innerHTML=`<h4>Tu costo de envío es de $150.</h4>
+                                 <h3>Te contactaremos a la brevedad.</h3>
+                                 <h2>Gracias por tu compra!</h2>`;
+                                 }
 
-      }
+   }
    
-
    nodoContendorTotal.appendChild(botonConfirmar);
    
 }
